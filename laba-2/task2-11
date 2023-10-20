@@ -1,0 +1,2 @@
+USE cd;
+SELECT facilities.facility,members.surname,members.firstname FROM members, facilities WHERE facilities.facid=members.memid; 
