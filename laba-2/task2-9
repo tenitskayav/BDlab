@@ -1,0 +1,2 @@
+USE cd;
+SELECT memid, surname, firstname, joindate FROM members WHERE joindate LIKE "2012-09%"; 
