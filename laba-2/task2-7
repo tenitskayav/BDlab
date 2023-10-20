@@ -1,2 +1,2 @@
 USE cd;
-SELECT facid, facility FROM facilities WHERE facid = 5 OR facid = 1;
+SELECT facid, facility FROM facilities WHERE facid IN (1 , 5);
