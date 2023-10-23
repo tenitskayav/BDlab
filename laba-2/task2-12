@@ -1,2 +1,3 @@
+-- выбирает последнюю дату регистрации.
 USE cd;
 SELECT MAX(joindate) FROM members; 
