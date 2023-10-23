@@ -1,2 +1,4 @@
+--выбирает всех членов клуба, зарегистрированных с сентября 2012 года.
 USE cd;
-SELECT memid, surname, firstname, joindate FROM members WHERE joindate LIKE "2012-09%"; 
+SELECT * FROM members WHERE MONTH(joindate) >= 9 AND YEAR(joindate) = 2012 OR YEAR(joindate) > 2012; 
+
