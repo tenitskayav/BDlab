@@ -1,0 +1,3 @@
+--выбирает имена объектов с их качественной стоимостью .
+USE cd;
+SELECT facility, IF (monthlymaintenance < 100, 'дешевый', 'дорогой') AS qualityvalue FROM facilities;
