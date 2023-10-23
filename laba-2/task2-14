@@ -1,2 +1,3 @@
+--выбирает самые дорогие и самые дешевые объекты.
 USE cd;
  SELECT  facility ,membercost FROM facilities WHERE membercost=(SELECT MAX(membercost) FROM facilities) OR membercost=(SELECT MIN(membercost) FROM facilities) ;
