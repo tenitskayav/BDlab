@@ -1,2 +1,6 @@
+--Объединяет  имена членов и названия объектов в обдну таблицу с одним столбцом.
 USE cd;
-SELECT facilities.facility,members.surname,members.firstname FROM members, facilities WHERE facilities.facid=members.memid; 
+SELECT DISTINCT CONCAT(firstname, ' ', surname) as 'Members and Facilities' FROM members 
+UNION
+SELECT DISTINCT facility FROM facilities;
+ 
