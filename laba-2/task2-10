@@ -1,3 +1,3 @@
---выбирает  10 фамилий членов клуба по алфавиту без повторов.
+--выбирает  10 фамилий членов клуба по алфавиту без повторов  и сортирует их.
 USE cd;
-SELECT DISTINCT surname FROM members ORDER BY surname LIMIT 10;
+SELECT DISTINCT surname FROM members WHERE memid < 12 AND memid != "GUEST" ORDER BY surname;
