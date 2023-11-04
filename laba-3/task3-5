@@ -1,4 +1,4 @@
---выбирает ФИ всех, кто покупал корты 1 и 2.
+--выбирает ФИ всех, кто покупал корты 1 и 2
 USE cd;
 SELECT DISTINCT concat(m.firstname, ' ', m.surname) AS fullname FROM members m 
 JOIN bookings b ON m.memid = b.memid
