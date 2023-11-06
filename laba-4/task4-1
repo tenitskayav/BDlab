@@ -1,0 +1,4 @@
+#Добавляет новый объект (‘spa’), initialoutlay = 100000, monthlymaintenance = 800, guestcost = 30, membercost = 20.
+USE cd;
+INSERT facilities(facid, facility, initialoutlay, monthlymaintenance, guestcost, membercost) 
+VALUES( 9, 'Spa', 100000, 800, 30, 20)
