@@ -1,9 +1,0 @@
---выбирает  всех членов клуба и членов, которые их рекомендовали,  
-отсортировав их по имени и фамилии.( без JOIN)
-USE cd;
-SELECT 
-    DISTINCT concat(m1.surname, ' ', m1.firstname) AS 'Участник' , IF(m1.recommendedby IS NULL, "NULL", concat(m2.surname, " ", m2.firstname)) AS 'Рекомендован'
-FROM 
-    members m1, members m2
-WHERE m1.recommendedby = m2.memid OR m1.recommendedby IS NULL
-ORDER BY Участник;
