@@ -1,0 +1,6 @@
+-- Добавить  ‘Squash Court 2’, ‘Squash Court 3’ со стоимостью создания = 5000, стоимостью обслуживания = 80, стоимостью аренды для членов клуба = 3.5, а гостей - 17.5.
+
+USE cd;
+INSERT  facilities(facid, facility, initialoutlay, monthlymaintenance,guestcost, membercost)
+	VALUES(10, 'Squash Court 2', 5000, 800, 3.5, 17.5),
+	      (11, 'Squash Court 3', 5000, 800, 3.5, 17.5);
