@@ -1,3 +1,0 @@
--- -выбирает теннисные корты, забронированные пользователями на 19.09.2012
-USE cd;
-SELECT  starttime,IF(facid='0', 'Tennis Court 1','Tennis Court 2') AS facility FROM bookings WHERE starttime LIKE '2012-09-19%' AND facid IN (0,1);
