@@ -1,0 +1,4 @@
+-- выбирает членов клуба, которые рекомендовали других членов
+USE cd;
+SELECT DISTINCT t1.memid, t1.firstname, t1.surname FROM members t1
+JOIN members t2 ON t1.memid = t2.recommendedby;

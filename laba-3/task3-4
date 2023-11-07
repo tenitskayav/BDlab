@@ -1,0 +1,6 @@
+-- выбирает  всех членов клуба и членов, которые их рекомендовали, отсортировав их по имени и фамилии.
+USE cd;
+SELECT t1.memid AS id, t1.surname AS 'Фамилия  участника', t1.firstname AS 'Имя участника', t1.recommendedby AS 'id порекомендовавшего',
+t2.surname AS 'Фамилия порекомендовавшего', t2.firstname AS 'Имя порекомендовавшего' FROM members t1
+LEFT JOIN members t2 ON t1.recommendedby = t2.memid
+ORDER BY t1.surname, t1.firstname;

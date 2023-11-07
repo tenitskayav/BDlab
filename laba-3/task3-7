@@ -1,0 +1,7 @@
+--выбирает всех членов клуба и членов, которые их рекомендовали,
+отсортировав их по имени и фамилии.( без JOIN)
+USE cd;
+SELECT memid,
+concat(m2.surname, ' ', m2.firstname) AS 'Участник', (SELECT concat(m1.surname, ' ', m1.firstname) FROM members m1 WHERE m1.memid = m2.recommendedby) AS 'Рекомендован '
+FROM members m2 WHERE surname != 'GUEST'
+ORDER BY Участник;
