@@ -1,0 +1,4 @@
+--добавить 'spa' из первого задания с новым id
+USE cd;
+INSERT facilities
+SELECT IF(facid=9, 12, NULL) AS facid, facility, membercost, guestcost, initialoutlay, monthlymaintenance FROM facilities WHERE facid = 9 ;
