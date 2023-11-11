@@ -1,0 +1,7 @@
+-- выведите членов клуба, которые не арендовали объекты клуба; удалите всех членов клуба, которые не арендовали объекты клуба. Проверьте есть ли в клубе член с memid = 37
+
+USE cd;
+SELECT CONCAT(surname, ' ', firstname) AS Участник FROM members WHERE memid NOT IN ( SELECT memid FROM bookings);
+DELETE FROM members 
+WHERE memid NOT IN ( SELECT memid FROM bookings);
+SELECT * FROM members WHERE memid = 37;
