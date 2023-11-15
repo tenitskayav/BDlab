@@ -1,4 +1,5 @@
 --добавить 'spa' из первого задания с новым id
 USE cd;
 INSERT facilities
-SELECT 12, facility, membercost, guestcost, initialoutlay, monthlymaintenance FROM facilities WHERE facid = 9 ;
+SELECT (SELECT MAX(facid)+1 FROM facilities), facility, membercost, guestcost, initialoutlay, monthlymaintenance FROM facilities where facid = 9  ;
+SELECT * FROM facilities;
