@@ -1,0 +1,7 @@
+-- Рассчитайте для каждого члена количество рекомендаций, данных этим членом клуба, искючив членов, которые не давали рекомендаций.
+USE cd;
+SELECT CONCAT(m1.firstname, ' ' ,m1.surname) AS Участник, COUNT(m2.memid) AS 'Количество рекомендаций'
+FROM members AS m1
+LEFT JOIN members AS m2 ON m2.recommendedby = m1.memid
+WHERE m2.memid IS NOT NULL
+GROUP BY m1.memid;
