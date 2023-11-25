@@ -1,0 +1,6 @@
+--Составьте список участников (включая гостей) вместе с количеством часов, которые они забронировали для объекта,  округленным до ближайших десяти часов. Ранжируйте их по этой округленной цифре, получая в результате имя, фамилию, округленные часы и звание (== ранг). Сортировка по званию (== рангу), фамилии и имени.
+USE cd;
+SELECT CONCAT(m.firstname, ' ', m.surname) AS 'ФИО', ROUND(SUM(b.slots/2), 0) AS 'Количество часов', 
+RANK() OVER (ORDER BY ROUND(SUM(b.slots/2), 0)) AS ranks
+FROM members m
+LEFT JOIN bookings b ON m.memid = b.memid GROUP BY m.memid ORDER BY m.firstname, m.surname;

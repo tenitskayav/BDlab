@@ -1,0 +1,18 @@
+--Для каждого дня августа 2012 года рассчитайте скользящее среднее общего дохода за предыдущие 15 дней. Вывод должен содержать столбцы даты и дохода, отсортированные по дате. Не забудьте учесть возможность того, что в день будет нулевой доход
+USE cd;
+SET @from_date = '2012-08-01', @to_date = '2012-08-31';
+WITH RECURSIVE dates(Дата) AS
+(SELECT @from_date AS Дата
+UNION ALL
+SELECT DATE_ADD(Дата, INTERVAL 1 DAY) FROM dates WHERE Дата < @to_date)
+
+SELECT Дата, TotalIncome / 15 AS MovingAverageIncome
+FROM (SELECT 
+		Дата, 
+        SUM(f.membercost * b.slots + f.guestcost * b.slots) AS TotalIncome
+FROM dates
+LEFT JOIN bookings b ON DATE(b.starttime) = dates.Дата
+LEFT JOIN facilities f ON b.facid = f.facid
+WHERE dates.Дата >= DATE_SUB(@from_date, INTERVAL 14 DAY) AND dates.Дата <= @to_date
+GROUP BY Дата) AS Income
+ORDER BY Дата; 

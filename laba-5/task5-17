@@ -1,0 +1,7 @@
+--Классифицируйте объекты на группы одинакового размера (высокие, средние и низкие в зависимости от их доходов). 
+Упорядочите по классификации и названию объекта.
+Примечание: используйте функцию деления на группы ntile
+USE cd;
+SELECT facility, NTILE(3) OVER(ORDER BY SUM(IF(b.memid = 0, f.guestcost * b.slots, f.membercost * b.slots))) groop FROM bookings b
+LEFT JOIN facilities f ON b.facid = f.facid GROUP BY f.facility ORDER BY  groop, facility
+;
