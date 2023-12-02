@@ -1,6 +1,4 @@
 --
 --Выведите наименования всех объектов клуба заглавными буквами, если они содержат в названии слово ‘Tennis’
 USE cd;
-SELECT
-    IF(facility LIKE '%Tennis%', UPPER(facility), facility) AS 'Название объекта'
-    FROM facilities;
+SELECT UPPER(facility)  AS 'Название объекта' FROM facilities WHERE facility LIKE BINARY '%Tennis%';
