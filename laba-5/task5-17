@@ -2,6 +2,17 @@
 Упорядочите по классификации и названию объекта.
 Примечание: используйте функцию деления на группы ntile
 USE cd;
-SELECT facility, NTILE(3) OVER(ORDER BY SUM(IF(b.memid = 0, f.guestcost * b.slots, f.membercost * b.slots))) groop FROM bookings b
-LEFT JOIN facilities f ON b.facid = f.facid GROUP BY f.facility ORDER BY  groop, facility
-;
+SELECT facility, 
+CASE 
+  WHEN groop = 1 THEN 'Высокий доход'
+  WHEN groop = 2 THEN 'Средний доход'
+  WHEN groop = 3 THEN 'Низкий доход'
+END AS groop
+FROM (
+  SELECT f.facility, SUM(IF(b.memid = 0, f.guestcost * b.slots, f.membercost * b.slots)) AS revenue,
+  NTILE(3) OVER (ORDER BY SUM(IF(b.memid = 0, f.guestcost * b.slots, f.membercost * b.slots))) AS groop
+  FROM facilities f
+  JOIN bookings b ON f.facid = b.facid
+  GROUP BY f.facility
+) AS subquery
+ORDER BY groop, facility;
