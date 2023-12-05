@@ -6,13 +6,9 @@ WITH RECURSIVE dates(Дата) AS
 UNION ALL
 SELECT DATE_ADD(Дата, INTERVAL 1 DAY) FROM dates WHERE Дата < @to_date)
 
-SELECT Дата, TotalIncome / 15 AS MovingAverageIncome
-FROM (SELECT 
-		Дата, 
-        SUM(f.membercost * b.slots + f.guestcost * b.slots) AS TotalIncome
-FROM dates
-LEFT JOIN bookings b ON DATE(b.starttime) = dates.Дата
+
+SELECT Дата, (SELECT SUM(f.membercost * b.slots + f.guestcost * b.slots) AS TotalIncome
+FROM  bookings b 
 LEFT JOIN facilities f ON b.facid = f.facid
-WHERE dates.Дата >= DATE_SUB(@from_date, INTERVAL 14 DAY) AND dates.Дата <= @to_date
-GROUP BY Дата) AS Income
-ORDER BY Дата; 
+WHERE b.starttime >= DATE_SUB(Дата, INTERVAL 14 DAY) AND  b.starttime <= Дата)/15 AS 'Среднее общего дохода' FROM dates
+
